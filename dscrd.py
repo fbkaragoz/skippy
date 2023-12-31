@@ -1,4 +1,5 @@
 from discord.ext import commands
+import discord
 import openai
 import handler
 import random
@@ -10,14 +11,19 @@ YOUTUBE_API_KEY = "AIzaSyBDM7xg03Ch6KY0V5lxpgPc9PpGnhYgVCI"
 DISCORD_TOKEN = "MTE5MDA0Mzg4ODcyMzk3MjE2Ng.GQMqi_.-EyBVvcQySoUU-85l42ST__AJImryl2fGLRdNc"
 
 class DiscordBot(commands.Bot):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, command_prefix, *args, **kwargs):
+        intents = discord.Intents.default()
+        intents.messages = True
+        intents.reactions = True
+        intents.members = True
+        intents.presences = True
+        super().__init__(command_prefix, intents=intents, *args, **kwargs)
         self.token = os.getenv('DISCORD_TOKEN')
         self.gpt_api_key = GPT_API_KEY
         self.youtube_api_key = YOUTUBE_API_KEY
+        self.token = DISCORD_TOKEN
         self.bot_handler = handler.BotHandler('../recent_data/recent_dialogues.txt')
         self.interest_keywords = ['alice', 'ai', 'cdli', 'fun', 'music']
-
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -70,18 +76,24 @@ class DiscordBot(commands.Bot):
         prompt = f"{self_intro} {contextual_knowledge} How should I respond to: '{message_content}'?"
         return prompt
 
+
     def get_contextual_knowledge(self):
+
         try:
             with open('contextual_knowledge.txt', 'r') as file:
                 knowledge = file.read()
             return knowledge
         except FileNotFoundError:
-            return "I'm 25 years old, living in two realities, aiming to achieve Singularity."
+            return ("I'm 25 years old, living in two realities,"
+                    " aiming to achieve Singularity.")
 
     def run(self):
         super().run(self.token)
 
 
-
-bot = DiscordBot()
+bot = DiscordBot(command_prefix='-')
 bot.run()
+
+
+
+
