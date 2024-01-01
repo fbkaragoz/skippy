@@ -1,6 +1,15 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <fstream>
+
+std::string encrypt(const std::string& input){
+    std::string encrypted = input;
+    for (char &c : encrypted) {
+        c += 1;
+    }
+    return encrypted;
+}
 
 int main() {
     std::map<std::string, std::string> tokens;
@@ -28,9 +37,12 @@ int main() {
         tokens[predefinedTokenName] = tokenValue;
 
     }
-    for (const auto& token : tokens) {
-        std::cout << "token name: " <<token.first << " token value: " << token.second << std::endl;
-
+    std::ofstream outfile("qwerty.txt");
+    for (const auto&token : tokens){
+        outfile << token.first << "=" << encrypt(token.second) << std::endl;
     }
+
+    outfile.close();
+    std::cout << "Tokens saved to encrypted_tokens.txt" << std::endl;
     return 0;
 }

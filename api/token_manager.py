@@ -19,7 +19,5 @@ def get_api_keys():
                 key, value = match.groups()
                 api_keys[key] = value
 
-
-
         return api_keys
 
