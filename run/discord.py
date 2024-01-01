@@ -1,7 +1,6 @@
 from discord.ext import commands
 import discord
-import token_manager
-from gpt import response
+from api import token_manager
 from bot_handler import BotHandler  # Import the BotHandler class
 
 
