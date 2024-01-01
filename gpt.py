@@ -25,3 +25,7 @@ def gpt_response(prompt, context, gpt_api_key, max_tokens=150, temperature=0.7):
     except Exception as e:
         print(f"Error: {e}")
         return None
+
+
+gpt_response("hello", "welcoming",
+             "4u3wGFOVuvEGSQPpfsmJT3BlbkFJWrUHSPh7ICEXhQsfnPuB")
