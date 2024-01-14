@@ -1,7 +1,6 @@
 import re
 
 API_TOKENS = 'tokens.txt'
-
 def get_api_keys():
     api_keys = {
         'gpt_api_key': None,
@@ -18,8 +17,6 @@ def get_api_keys():
             if match:
                 key, value = match.groups()
                 api_keys[key] = value
-
-
 
         return api_keys
 

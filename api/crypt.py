@@ -17,7 +17,6 @@ class Cryption:
             base64_bytes = base64.b64encode(bytes_value)
             print(base64_bytes)
 
-
 cryption = Cryption()
 cryption.recall_values()
 cryption.encode_values()
