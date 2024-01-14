@@ -1,25 +1,25 @@
 import re
 
-API_TOKENS = 'tokens.txt'
 
-def get_api_keys():
-    api_keys = {
-        'gpt_api_key': None,
-        'youtube_api_key': None,
-        'discord_api_key': None,
-        'twitter_api_key': None
-    }
+API_TOKENS = '/Users/felixfelicis/PycharmProjects/DiscordBot/api/tokens.txt'#log infrentials
 
+def get_api_keys(*token_all):
+    api_keys = {}
     with open(API_TOKENS, 'r', encoding='utf-8') as f:
-        token_lines = f.readlines()
-        for line in token_lines:
-            match = re.match(r'(\w+)\s*=\s*(.+)', line)
-
+        for line in f:
+            match = re.match(r'(\w+)\s*=\s*(.+)', line.strip())
             if match:
                 key, value = match.groups()
                 api_keys[key] = value
 
+    return api_keys
+
+def add_api_keys(*token_all):
+    pass
 
 
-        return api_keys
+api_locker = get_api_keys()
 
+
+"""for key, value in api_locker.items():
+    print(key + ':', value.strip())"""
