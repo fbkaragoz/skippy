@@ -1,22 +1,33 @@
 import re
+import os
 
 API_TOKENS = 'tokens.txt'
-def get_api_keys():
-    api_keys = {
-        'gpt_api_key': None,
-        'youtube_api_key': None,
-        'discord_api_key': None,
-        'twitter_api_key': None
-    }
+directory_root = './info'
 
-    with open(API_TOKENS, 'r', encoding='utf-8') as f:
-        token_lines = f.readlines()
-        for line in token_lines:
+tokens_file_path = os.path.join(directory_root, API_TOKENS)
+
+def get_api_keys(*tokens):
+
+
+    api_keys = {}
+
+    with open(tokens_file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+        for line in lines:
             match = re.match(r'(\w+)\s*=\s*(.+)', line)
 
             if match:
                 key, value = match.groups()
                 api_keys[key] = value
 
+
         return api_keys
 
+
+api_locker = get_api_keys()
+
+
+"""
+for k, v in api_keys.items():
+    print(k, v)"""
