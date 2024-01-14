@@ -1,7 +1,6 @@
 import re
 
 API_TOKENS = 'tokens.txt'
-
 def get_api_keys():
     api_keys = {
         'gpt_api_key': None,
