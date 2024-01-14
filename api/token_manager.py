@@ -1,7 +1,7 @@
 import re
 import os
 
-API_TOKENS = 'tokens.txt'
+API_TOKENS = '.tokens.bin'
 directory_root = './info'
 
 tokens_file_path = os.path.join(directory_root, API_TOKENS)
@@ -28,6 +28,6 @@ def get_api_keys(*tokens):
 api_locker = get_api_keys()
 
 
-"""
-for k, v in api_keys.items():
-    print(k, v)"""
+
+for k, v in api_locker.items():
+    print(k, v)

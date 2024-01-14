@@ -1,28 +1,25 @@
 from discord.ext import commands
 import discord
-import openai
 import handler
 import random
-from googleapiclient.discovery import build
 import os
+token_path = '../../api'
 
-GPT_API_KEY = "4u3wGFOVuvEGSQPpfsmJT3BlbkFJWrUHSPh7ICEXhQsfnPuB"
-YOUTUBE_API_KEY = "AIzaSyBDM7xg03Ch6KY0V5lxpgPc9PpGnhYgVCI"
-DISCORD_TOKEN = "MTE5MDA0Mzg4ODcyMzk3MjE2Ng.GQMqi_.-EyBVvcQySoUU-85l42ST__AJImryl2fGLRdNc"
+
 
 class DiscordBot(commands.Bot):
     def __init__(self, command_prefix, *args, **kwargs):
         intents = discord.Intents.default()
-        intents.messages = True
-        intents.reactions = True
-        intents.members = True
-        intents.presences = True
+        all_intents = ['reactions', 'messages', 'members', 'presences']
+        intents_defined = [all_intents for _ in all_intents]
+        intents.intents_defined = True
+
         super().__init__(command_prefix, intents=intents, *args, **kwargs)
         self.token = os.getenv('DISCORD_TOKEN')
         self.gpt_api_key = GPT_API_KEY
         self.youtube_api_key = YOUTUBE_API_KEY
         self.token = DISCORD_TOKEN
-        self.bot_handler = handler.BotHandler('../recent_data/recent_dialogues.txt')
+        self.bot_handler = handler.BotHandler('../../recent_data/recent_dialogues.txt')
         self.interest_keywords = ['alice', 'ai', 'cdli', 'fun', 'music']
 
     async def on_message(self, message):
