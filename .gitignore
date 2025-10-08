@@ -5,6 +5,8 @@ tokens.txt
 .tokens.bin
 api/info/tokens.txt
 api/info/.tokens.bin
+qwerty.txt
+encrypted_tokens.txt
 
 # Sensitive data
 secret/
