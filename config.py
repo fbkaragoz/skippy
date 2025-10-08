@@ -55,5 +55,6 @@ class Config:
             }
         }
 
-Config.ensure_dirs()
-Config.validate()
+if __name__ == "__main__":
+    Config.ensure_dirs()
+    Config.validate()
