@@ -1,3 +1,0 @@
-gpt_api_key = 4u3wGFOVuvEGSQPpfsmJT3BlbkFJWrUHSPh7ICEXhQsfnPuB
-youtube_api_key = AIzaSyBDM7xg03Ch6KY0V5lxpgPc9PpGnhYgVCI
-discord_api_key = MTE5MDA0Mzg4ODcyMzk3MjE2Ng.GQMqi_.-EyBVvcQySoUU-85l42ST__AJImryl2fGLRdNc
