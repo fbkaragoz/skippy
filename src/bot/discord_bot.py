@@ -1,7 +1,5 @@
-import discord
-import handler
-import random
-import os
+from token_manager import TokenManager
 
-# .env for token path
-_TOKEN_PATH=os.
+token_manager = TokenManager()
+DISCORD_TOKEN = token_manager.get_dc_token() # discord token
+
