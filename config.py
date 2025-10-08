@@ -31,7 +31,7 @@ class Config:
 
     @classmethod
     def validate(cls):
-        assert cls.ENVIRONMENT in ["development", "production"], "Invalid environment"
+        assert cls.ENVIRONMENT in ["ENVIRONMENT", "development"], "Invalid environment"
         assert cls.DC_TOKEN, "Missing DC_TOKEN"
         assert cls.OAI_TOKEN, "Missing OAI_TOKEN"
         assert cls.X_TOKEN, "Missing X_TOKEN"
