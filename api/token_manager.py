@@ -7,8 +7,6 @@ directory_root = './info'
 tokens_file_path = os.path.join(directory_root, API_TOKENS)
 
 def get_api_keys(*tokens):
-
-
     api_keys = {}
 
     with open(tokens_file_path, 'r', encoding='utf-8') as f:

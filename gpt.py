@@ -1,4 +1,5 @@
-import openai
+from openai import OpenAI
+client = OpenAI()
 
 def gpt_response(prompt, context, gpt_api_key, max_tokens=150, temperature=0.7):
     """
