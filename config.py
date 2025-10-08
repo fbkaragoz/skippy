@@ -37,5 +37,23 @@ class Config:
         assert cls.OAI_TOKEN, "Missing OAI_TOKEN"
         assert cls.X_TOKEN, "Missing X_TOKEN"
 
+    @classmethod
+    def as_dict(cls):
+        return {
+            'environment': cls.ENVIRONMENT,
+            'project_root': cls.PROJECT_ROOT,
+            'directories': {
+                'data': cls.DATA_DIR,
+                'logs': cls.LOGS_DIR,
+                'temp': cls.TEMP_DIR,
+                # 'models': cls.MODEL_DIR,
+            },
+            'tokens': {
+                'discord': cls.DC_TOKEN,
+                'openai': cls.OAI_TOKEN,
+                'x': cls.X_TOKEN,
+            }
+        }
+
 Config.ensure_dirs()
 Config.validate()
