@@ -1,0 +1,7 @@
+# Example token file format
+# DO NOT put real API keys here
+# Use environment variables instead
+
+gpt_api_key = your_gpt_api_key_here
+youtube_api_key = your_youtube_api_key_here
+discord_api_key = your_discord_api_key_here

@@ -3,7 +3,18 @@
 #include <map>
 #include <fstream>
 
+/*
+ * SECURITY WARNING: This encryption is NOT secure!
+ * - Caesar cipher (shift by 1) is trivially broken
+ * - Storing encrypted tokens in files is insecure
+ * - Use proper secret management instead (environment variables, key vaults)
+ * 
+ * This tool is for educational purposes only.
+ * DO NOT use in production environments.
+ */
+
 std::string encrypt(const std::string& input){
+    // WARNING: This is NOT real encryption - just a Caesar cipher shift by 1
     std::string encrypted = input;
     for (char &c : encrypted) {
         c += 1;
