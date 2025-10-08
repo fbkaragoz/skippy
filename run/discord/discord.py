@@ -3,9 +3,10 @@ import discord
 import handler
 import random
 import os
-token_path = '../../api'
 
-
+# Load environment variables (recommended: use python-dotenv)
+# from dotenv import load_dotenv
+# load_dotenv()
 
 class DiscordBot(commands.Bot):
     def __init__(self, command_prefix, *args, **kwargs):
@@ -15,10 +16,20 @@ class DiscordBot(commands.Bot):
         intents.intents_defined = True
 
         super().__init__(command_prefix, intents=intents, *args, **kwargs)
+        
+        # Load API keys from environment variables
         self.token = os.getenv('DISCORD_TOKEN')
-        self.gpt_api_key = GPT_API_KEY
-        self.youtube_api_key = YOUTUBE_API_KEY
-        self.token = DISCORD_TOKEN
+        self.gpt_api_key = os.getenv('GPT_API_KEY')
+        self.youtube_api_key = os.getenv('YOUTUBE_API_KEY')
+        
+        # Validate that required keys are present
+        if not self.token:
+            raise ValueError("DISCORD_TOKEN not found in environment variables")
+        if not self.gpt_api_key:
+            print("Warning: GPT_API_KEY not found in environment variables")
+        if not self.youtube_api_key:
+            print("Warning: YOUTUBE_API_KEY not found in environment variables")
+            
         self.bot_handler = handler.BotHandler('../../recent_data/recent_dialogues.txt')
         self.interest_keywords = ['alice', 'ai', 'cdli', 'fun', 'music']
 

@@ -3,6 +3,13 @@
 #include <string.h>
 #include <stdbool.h>
 
+/* 
+ * SECURITY WARNING: This file contains insecure authentication and file handling
+ * - Hardcoded password is not secure
+ * - tokens.txt should not contain plaintext API keys
+ * - Use proper authentication and secret management instead
+ */
+
 const char* storedPasswordHash = "555";
 const char* encryptedFilePath = "../api/info/tokens.txt"; 
 

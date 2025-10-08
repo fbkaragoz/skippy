@@ -1,0 +1,9 @@
+# Core dependencies
+discord.py>=2.0.0
+openai>=0.27.0
+google-api-python-client>=2.0.0
+
+# Security - for loading environment variables
+python-dotenv>=0.19.0
+
+# Add other dependencies as needed
