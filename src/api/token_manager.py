@@ -1,31 +1,26 @@
-import re
 import os
+from dotenv import load_dotenv
 
-API_TOKENS = '.tokens.bin'
-directory_root = './info'
+class TokenManager:
+    def __init__(self):
+        load_dotenv()
 
-tokens_file_path = os.path.join(directory_root, API_TOKENS)
+    def get_dc_token(self):
+        try:
+            return os.getenv('DISCORD_TOKEN')
+        except Exception as e:
+            raise ValueError("Failed to retrieve Discord token") from e
 
-def get_api_keys(*tokens):
-    api_keys = {}
+    def get_oai_token(self):
+        try:
+            return os.getenv('OPENAI_TOKEN')
+        except Exception as e:
+            raise ValueError("Failed to retrieve OpenAI token") from e
 
-    with open(tokens_file_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-
-        for line in lines:
-            match = re.match(r'(\w+)\s*=\s*(.+)', line)
-
-            if match:
-                key, value = match.groups()
-                api_keys[key] = value
-
-
-        return api_keys
-
-
-api_locker = get_api_keys()
-
-
-
-for k, v in api_locker.items():
-    print(k, v)
+    def get_x_token(self):
+        try:
+            return os.getenv('X_TOKEN')
+        except Exception as e:
+            raise ValueError("Failed to retrieve X token") from e
+        
+        
