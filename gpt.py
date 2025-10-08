@@ -27,5 +27,7 @@ def gpt_response(prompt, context, gpt_api_key, max_tokens=150, temperature=0.7):
         return None
 
 
-gpt_response("hello", "welcoming",
-             "4u3wGFOVuvEGSQPpfsmJT3BlbkFJWrUHSPh7ICEXhQsfnPuB")
+# Example usage (use environment variables for API keys):
+# import os
+# gpt_api_key = os.getenv('GPT_API_KEY')
+# gpt_response("hello", ["welcoming"], gpt_api_key)
