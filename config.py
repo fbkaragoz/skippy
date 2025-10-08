@@ -1,11 +1,16 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError as exc:
+    raise ImportError(
+        "Missing dependency 'python-dotenv'. Install via `pip install python-dotenv`."
+    ) from exc
 
 
 class Config:
-    PROJECT_ROOT = Path(__file__).resolve.parent
+    PROJECT_ROOT = Path(__file__).resolve().parent
     ENV_FILE = PROJECT_ROOT / ".env"
 
     """DIRECTORIES"""
