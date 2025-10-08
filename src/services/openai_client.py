@@ -26,6 +26,9 @@ class OpenAIChatService:
             self._log.exception("OpenAI chat call failed: %s", exc)
             raise
 
+        if not response.choices or len(response.choices) == 0:
+            self._log.error("OpenAI response contains no choices.")
+            raise ValueError("OpenAI response contains no choices.")
         choice = response.choices[0]
         content = choice.message.content or ""
         if not content:
